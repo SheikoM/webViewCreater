@@ -1,4 +1,4 @@
-package com.shepko.webview;
+package com.shepko.webview3;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,7 +10,9 @@ import android.webkit.WebView;
 public class MainActivity extends AppCompatActivity {
 
     // тут нужно задать url сайта
-    private final String url = "https://liniilubvi.ru/";
+//    private final String url = "https://rozetka.com.ua/ua/";
+    private final String url = "https://www.mvideo.ru/";
+//    private final String url = "https://liniilubvi.ru/";
 
     private WebView mWebView;
 
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
         // включаем поддержку JavaScript
         mWebView.getSettings().setJavaScriptEnabled(true);
+        mWebView.setWebViewClient(new MyWebViewClient());
 
         // включаем само приложение в браузере
         if (savedInstanceState == null) {
@@ -38,5 +41,14 @@ public class MainActivity extends AppCompatActivity {
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         mWebView.saveState(outState);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(mWebView.canGoBack()) {
+            mWebView.goBack();
+        } else {
+            super.onBackPressed();
+        }
     }
 }

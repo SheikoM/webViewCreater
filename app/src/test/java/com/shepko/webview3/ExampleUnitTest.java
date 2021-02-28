@@ -1,4 +1,4 @@
-package com.shepko.webview;
+package com.shepko.webview3;
 
 import org.junit.Test;
 
